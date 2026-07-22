@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusTodo Pro</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<div id="app">
+<header class="topbar">
+ <button class="icon-btn" id="menuBtn" title="菜单">☰</button>
+ <div class="brand"><span>✓</span><b>FocusTodo</b></div>
+ <div class="top-actions"><button class="icon-btn" id="searchBtn">⌕</button><button class="icon-btn" id="themeBtn">◐</button><button class="avatar">W</button></div>
+</header>
+<div class="layout">
+<aside id="sidebar">
+ <button class="primary wide" id="newTaskBtn">＋ 新建待办</button>
+ <nav id="smartViews"></nav>
+ <div class="side-title"><span>我的清单</span><button id="addListBtn">＋</button></div>
+ <nav id="listNav"></nav>
+ <div class="side-title"><span>标签</span></div><div id="tagCloud" class="tag-cloud"></div>
+ <div class="sidebar-bottom"><button data-view="stats">📊 统计</button><button data-view="settings">⚙ 设置</button></div>
+</aside>
+<main>
+ <section id="taskView">
+  <div class="view-head"><div><h1 id="viewTitle">今日待办</h1><p id="viewSubtitle"></p></div>
+   <div class="view-actions"><button id="calendarBtn">▦</button><button id="moreBtn">•••</button></div>
+  </div>
+  <div class="quick-add"><button id="voiceBtn" title="语音输入">🎙</button><input id="quickInput" placeholder="添加任务，支持“明天 9点 #工作 !高”"><button id="quickAddBtn">添加</button></div>
+  <div class="toolbar">
+   <div><button class="seg active" data-mode="list">列表</button><button class="seg" data-mode="board">看板</button></div>
+   <select id="sortSelect"><option value="custom">自定义排序</option><option value="due">截止时间</option><option value="priority">优先级</option><option value="created">创建时间</option></select>
+  </div>
+  <div id="bulkBar" class="bulk hidden"><span id="selectedCount">0 项</span><button data-bulk="complete">完成</button><button data-bulk="move">移动</button><button data-bulk="delete">删除</button><button data-bulk="cancel">取消</button></div>
+  <div id="taskList"></div>
+  <div id="emptyState" class="empty hidden"><div>🎉</div><h3>这里暂时没有任务</h3><p>添加一个待办，开始高效的一天。</p></div>
+ </section>
+ <section id="calendarView" class="hidden"></section>
+ <section id="statsView" class="hidden"></section>
+ <section id="settingsView" class="hidden"></section>
+</main>
+</div>
+<button id="fab">＋</button>
+<div id="modalRoot"></div><div id="toastRoot"></div>
+</div>
+<script src="app.js"></script></body></html>

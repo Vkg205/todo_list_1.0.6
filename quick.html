@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>快速新建待办</title>
+  <style>
+    :root{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#18212f;background:#f5f7fb}
+    *{box-sizing:border-box}body{margin:0;padding:18px}.card{background:#fff;border:1px solid #e7eaf0;border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(32,48,85,.11)}
+    h2{margin:0 0 12px;font-size:18px}input,select,button{font:inherit;border:1px solid #d9deea;border-radius:9px;padding:9px}input{width:100%;margin-bottom:9px;outline:none}.row{display:grid;grid-template-columns:1fr 110px auto;gap:7px}button{background:#5b7cfa;color:#fff;border-color:#5b7cfa;font-weight:700}.tip{color:#7c8799;font-size:11px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>⚡ 快速新建待办</h2>
+    <input id="title" autofocus placeholder="输入待办标题，回车保存">
+    <div class="row"><select id="list"></select><select id="priority"><option value="high">高优先级</option><option value="medium">中优先级</option><option value="low">低优先级</option></select><button id="add">添加</button></div>
+    <div class="tip" id="tip">数据会直接保存到 FocusTodo 本地历史记录。</div>
+  </div>
+  <script src="quick.js"></script>
+</body>
+</html>
