@@ -1,0 +1,12 @@
+FocusTodo Pro v1.0.2 持久化修复
+
+1. 不再使用 Electron 内置 window.chrome 名称作为预加载桥接入口。
+2. 任务数据统一写入 Electron userData 目录的 todo-data.json。
+3. 每次写入前保留 todo-data.backup.json 自动备份。
+4. 主数据文件损坏时自动尝试读取备份。
+5. 自动迁移 v1.0.1 可能保存在 localStorage 中的历史任务。
+6. 覆盖安装或升级 EXE 不会删除用户数据。
+
+Windows 常见数据位置：
+%APPDATA%\\FocusTodo Pro\\todo-data.json
+（实际文件夹名称取决于 Electron app 名称。）

@@ -1,0 +1,61 @@
+{
+  "name": "focustodo-desktop",
+  "version": "1.0.5",
+  "description": "FocusTodo Pro Windows desktop application with task dependencies and DDL scheduling",
+  "main": "main.js",
+  "author": "Weikegen",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis portable --publish never",
+    "build:dir": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.weikegen.focustodo",
+    "productName": "FocusTodo Pro",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "package.json",
+      "data-io.js",
+      "templates/**/*"
+    ],
+    "win": {
+      "icon": "src/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "FocusTodo Pro",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "xlsx": "0.18.5"
+  }
+}

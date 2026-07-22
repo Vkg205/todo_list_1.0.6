@@ -1,0 +1,15 @@
+FocusTodo Pro Desktop v1.0.4 启动修复
+
+问题：
+- v1.0.3 启动时提示 “An object could not be cloned”。
+- 错误位于 src/app.js 的 runtime.onMessage.addListener 调用。
+
+根因：
+- preload.js 中 addListener 使用箭头表达式直接返回 Set.add() 的 Set 对象。
+- 该 Set 内包含函数代理，Electron contextBridge 无法将其克隆回渲染进程。
+
+修复：
+- storage.onChanged 和 runtime.onMessage 的 addListener/removeListener 不再返回 Set/Boolean，统一返回 undefined。
+- app.js 对桥接监听器增加可选链防护，桥接异常不再阻断整个界面启动。
+- 增加 preload 桥接回归测试，验证监听器注册返回值可跨 contextBridge 安全传递。
+- 保留 v1.0.3 的子任务、导入导出、XLSX 模板、持久化和历史任务功能。
